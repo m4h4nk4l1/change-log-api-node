@@ -1,7 +1,6 @@
 # change-log-api-node
 
-# INTRO
-#### This is an api developed for changes that be released with different versions of any product to keep track of those internally with a postgresql database storing all the information regarding it. This api is developed using express.js and nodejs as runtime, coded in typescript.
+### This is an api developed for changes that be released with different versions of any product to keep track of those internally with a postgresql database storing all the information regarding it. This api is developed using express.js and nodejs as runtime, coded in typescript.
 
 ## Technologies & libraries used
 
@@ -47,5 +46,36 @@ The API provides the following endpoints:
 - `PUT /api/product/:id` - Update the product details and log the version change.
 - `GET /api/product` - Get a list of all products with their latest versions.
 - `GET /api/log/:productId` - Retrieve the update log for a specific product.
+- `DELETE /api/product/:id` - Deletes the update log for a specific product with given id.
+  
+- `GET /api/update` - Get all updates.
+- `GET /api/update/:id` - Get a specific update by ID.
+- `PUT /api/update/:id` - Update an existing update entry. 
+  - Request body parameters (optional):
+    - `title` (string)
+    - `body` (string)
+    - `status` (string, valid values: "IN_PROGRESS", "SHIPPED", "DEPRECATED")
+    - `version` (string)
+- `POST /api/update` - Create a new update entry.
+  - Request body parameters (required):
+    - `title` (string)
+    - `body` (string)
+    - `productId` (string)
+- `DELETE /api/update/:id` - Delete a specific update by ID.
+  
+- `GET /api/updatepoint` - Get all update points.
+- `GET /api/updatepoint/:id` - Get a specific update point by ID.
+- `PUT /api/updatepoint/:id` - Update an existing update point entry.
+  - Request body parameters (optional):
+    - `name` (string)
+    - `description` (string)
+- `POST /api/updatepoint` - Create a new update point entry.
+  - Request body parameters (required):
+    - `name` (string)
+    - `description` (string)
+    - `updateId` (string)
+- `DELETE /api/updatepoint/:id` - Delete a specific update point by ID.
+
+
 
 The API accepts and returns data in JSON format.
